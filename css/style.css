@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+body{
+  margin: 0;
+  padding: 0;
+  color: #333;
+  margin: auto;
+}/*bodyに継承される.h1h2はデフォルトで設定されるから影響されない*/
+#main{
+  font-size: 15px;  
+  border: 1px solid #716961;/*borderで細い実線をつける.*/
+  padding: 5px 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;/*borderを角丸に.*/
+}
+#main p{
+  margin: 10px 20px 20px 10px;/*内側の余白*/
+  text-align: center
+}
+#main button{
+  margin: 10px 20px;/*内側の余白*/
+  width: auto;
+}
+#nyuuryoku{
+  width 36em;
+  height 10em;
+}
+#sousin{
+  background-color: #352b23;
+  border: 1px solid #352b23;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #fff;
+}

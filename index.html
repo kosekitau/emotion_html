@@ -56,6 +56,34 @@
       // サーバから解析結果を受け取った場合
       connection.onmessage = function (e) {
         document.getElementById("message").innerHTML = String(e.data)
+        result = e.data.split(',');// result.shape = [10]
+        
+        var chart2 = new CanvasJS.Chart("today", {
+	       theme: "light2", // "light1", "light2", "dark1", "dark2"
+	       exportEnabled: true,
+	       animationEnabled: true,
+	       title: {
+		        text: "today"
+	       },
+	       data: [{
+		      type: "pie",
+		      startAngle: 25,
+		      toolTipContent: "<b>{label}</b>: {y}%",
+		      showInLegend: "true",
+		      legendText: "{label}",
+		      indexLabelFontSize: 16,
+		      indexLabel: "{label} - {y}%",
+		      dataPoints: [
+			     { y: result[5], label: "ANGER" },
+			     { y: result[6], label: "FEAR" },
+			     { y: result[7], label: "DISGUST" },
+			     { y: result[8], label: "SADNESS" },
+			     { y: result[9], label: "ENJOYMENT" }
+		      ]
+	       }]
+        });
+        chart2.render();
+        
       };
       
       function send(){
@@ -88,8 +116,9 @@
   
 <body>
   <div id="main">
-      <div id="total" style="height: 300px; width: 100%;"></div>
+      <div id="total" style="height: 250px; width: 100%;"></div>
       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <div id="today" style="height: 250px; width: 100%;"></div>
     <form name="js">
       <p>
         <textarea id="nyuuryoku" name="txtb" value="" rows="10" cols="60"></textarea><br>
