@@ -29,7 +29,8 @@ def receive_message(client, server, message):
   df = pd.read_csv('sample.csv', index_col=['label'])
   total = ','.join(df.loc['total'].values.astype('str').tolist()) 
   today = ','.join(df.loc['today'].values.astype('str').tolist()) 
-  server.send_message_to_all(total + ',' + today)
+  mess = 'お前はよくやってるよ'
+  server.send_message_to_all(mess + ',' + total + ',' + today)
   
 server = WebsocketServer(50007, host='127.0.0.1')
 server.set_fn_new_client(new_client)

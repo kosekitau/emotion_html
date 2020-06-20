@@ -55,7 +55,9 @@
  
       // サーバから解析結果を受け取った場合
       connection.onmessage = function (e) {
-        document.getElementById("message").innerHTML = String(e.data)
+        //出力文の表示
+        document.getElementById("message").innerHTML = String(e.data.split(',')[0])
+        
         result = e.data.split(',');// result.shape = [10]
         
         var chart2 = new CanvasJS.Chart("today", {
@@ -120,6 +122,9 @@
       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
       <div id="today" style="height: 250px; width: 100%;"></div>
     <form name="js">
+      <p id = "message">
+        
+      </p>
       <p>
         <textarea id="nyuuryoku" name="txtb" value="" rows="10" cols="60"></textarea><br>
         <!--メッセージ:<input type="text" name="txtb" value="">-->
@@ -127,9 +132,6 @@
     </form>
     <p>
         <button onclick="send()">送信</button>
-    </p>
-    <p id = "message">
-      類似文章出力結果
     </p>
   </div>
 </body>
